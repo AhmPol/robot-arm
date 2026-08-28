@@ -3,6 +3,7 @@
 
 #include "raylib.h"
 #include <math.h>
+#include <stdio.h>
 
 #define SCREEN_HEIGHT 650
 #define SCREEN_WIDTH 1000
@@ -34,6 +35,18 @@ typedef struct Arm
     Joint joint2;
 } Arm;
 
+typedef struct Telemetry
+{
+    double time;
+    float angle1;
+    float angle2;
+    float target1;
+    float target2;
+    float speed1;
+    float speed2;
+    float error;
+} Telemetry;
+
 Vector2 getTargetDelta(Vector2 target, Vector2 initial);
 void correctAngle(Arm *arm);
 void getShortestDistance(Arm *arm);
@@ -43,5 +56,12 @@ void drawLines(Vector2 base, Vector2 joint1, Vector2 joint2);
 void drawCircles(Vector2 base, Vector2 joint1, Vector2 joint2, Vector2 target);
 void selectMode(Arm *arm, float endpointAngle, float elbowAngle, int mode, float distance);
 void clampVector(float *distance, Vector2 *d, Vector2 target, Vector2 base);
+void getTelemetry(double time, Arm arm, Telemetry telemetry[], float error, int count);
+bool printCSV(Telemetry data[], int sample);
+void recordState(bool *recording, bool *export, double *time, double *lastSample);
+void startMovementTime(Arm arm, double *startTime, bool *timing);
+void stopMovementTime(float error, double *endTime, bool *timing, double startTime);
+void recordTelemetry(double time, double *lastSample, int *sample, bool *recording, Arm arm, Telemetry data[], float error);
+bool recordCSV(bool recording, int *sample, bool *export, Telemetry data[]);
 
 #endif
