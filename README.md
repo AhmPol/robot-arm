@@ -1,31 +1,18 @@
-# Robot Arm Simulator
+## Current Status
 
-A 2D robotic arm simulator written in C using raylib.
+Version 1 complete.
 
-## Goal
+The simulator currently supports:
 
-Build an interactive robotic arm that can eventually:
-
-- move joints manually
-- reach a target
-- display arm position and error
-- use automatic control
-- record telemetry
-- experiment with controller behavior
-
-## Current Milestone
-
-Create a raylib window and draw one arm segment.
-
-## Planned Progress
-
-1. Open a raylib window
-2. Draw a base point
-3. Draw one arm segment
-4. Rotate the arm using keyboard input
-5. Add a second joint
-6. Add a target
-7. Calculate distance to the target
-8. Add automatic target reaching
-9. Add smoother motion
-10. Add telemetry and graphs
+- Two-link planar robotic arm
+- Mouse-controlled target selection
+- Inverse kinematics
+- Elbow configuration switching
+- Workspace clamping
+- Smooth joint acceleration and deceleration
+- Forward kinematics
+- Endpoint error calculation
+- Telemetry recording
+- CSV export
+- Live 20-second scrolling graphs
+- Toggleable angle, target, speed, and error plots
